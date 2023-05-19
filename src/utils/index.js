@@ -60,12 +60,31 @@ export const DEFAULT_CONFIG = {
   },
   ros: {
     endpoint:
-      getURLEndpoint('bridge') || `ws://${window.location.host}/ros/bridge`,
+      getURLEndpoint('bridge') || `wss://zethus-pub.wsrobots.com`,
     pkgsEndpoint:
-      getURLEndpoint('pkgs') || `http://${window.location.host}/ros/pkgs`,
+      getURLEndpoint('pkgs') || `https://zethus-pub.wsrobots.com`,
   },
   infoTabs: [],
-  visualizations: [],
+  visualizations: [
+    {
+      vizType: 'Tf',
+      topicName: '/tf_old',
+      messageType: 'tf2_msgs/TFMessage',
+      name: 'Tf',
+      visible: true,
+      key: 'sHZDWudi7'
+    },
+    {
+      vizType: 'Odometry',
+      topicName: '/odom_rosbag',
+      messageType: 'nav_msgs/Odometry',
+      name: 'Odometry',
+      visible: true,
+      key: '6LgWYoPl_',
+      keep: '20',
+      color: '#204a87'
+    }
+  ],
   globalOptions: {
     display: true,
     backgroundColor: {
@@ -91,7 +110,7 @@ export const DEFAULT_CONFIG = {
       enabled: true,
     },
     measure: {
-      display: false,
+      display: true,
     },
     custom: [],
   },
