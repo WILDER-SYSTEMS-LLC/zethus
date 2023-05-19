@@ -1,0 +1,69 @@
+{
+  "panels": {
+    "sidebar": {
+      "display": true,
+      "collapsed": false
+    },
+    "header": {
+      "display": true
+    },
+    "info": {
+      "display": true,
+      "collapsed": true
+    }
+  },
+  "ros": {
+    "endpoint": "wss://zethus-pub.wsrobots.com",
+    "pkgsEndpoint": "wss://zethus-pub.wsrobots.com"
+  },
+  "infoTabs": [],
+  "visualizations": [
+    {
+      "vizType": "Tf",
+      "topicName": "/tf_old",
+      "messageType": "tf2_msgs/TFMessage",
+      "name": "Tf",
+      "visible": true,
+      "key": "sHZDWudi7"
+    },
+    {
+      "vizType": "Odometry",
+      "topicName": "/odom_rosbag",
+      "messageType": "nav_msgs/Odometry",
+      "name": "Odometry",
+      "visible": true,
+      "key": "6LgWYoPl_",
+      "keep": "20",
+      "color": "#204a87"
+    }
+  ],
+  "globalOptions": {
+    "display": true,
+    "backgroundColor": {
+      "display": true,
+      "value": "#000000"
+    },
+    "fixedFrame": {
+      "display": true,
+      "value": "world"
+    },
+    "grid": {
+      "display": true,
+      "size": 30,
+      "divisions": 30,
+      "color": "#222222",
+      "centerlineColor": "#333333"
+    }
+  },
+  "tools": {
+    "mode": "controls",
+    "controls": {
+      "display": false,
+      "enabled": true
+    },
+    "measure": {
+      "display": false
+    },
+    "custom": []
+  }
+}
