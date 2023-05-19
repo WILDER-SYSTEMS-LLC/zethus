@@ -1,7 +1,7 @@
 FROM node:12.12.0-alpine
 RUN apk update
 WORKDIR /usr/src/app
-COPY .babelrc .env *.json *.js .
+COPY .babelrc .env *.json *.js ./
 RUN npm install
 COPY ./src  ./src/
 COPY ./public  ./public/
