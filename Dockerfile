@@ -1,11 +1,14 @@
-FROM exiasr/alpine-yarn-nginx
+FROM node:12.12.0-alpine
 RUN apk update
-COPY . /usr/src/app/
-RUN (cd  /usr/src/app && npm ci && npm run build)
 WORKDIR /usr/src/app
-RUN mkdir -p /usr/share/nginx/html/ && \
-  cp -R build/* /usr/share/nginx/html/ && \
-  cp /usr/src/app/nginx.conf /etc/nginx/conf.d/default.conf && \
-  rm -rf /usr/src/app
+COPY .babelrc .env *.json *.js .
+RUN npm install
+COPY ./src  ./src/
+COPY ./public  ./public/
+RUN npm run build
 
+FROM exiasr/alpine-yarn-nginx
+RUN mkdir -p /usr/share/nginx/html/
+COPY --from=0 /usr/src/app/build/* /usr/share/nginx/html/
+ADD ./nginx.conf /etc/nginx/conf.d/default.conf
 CMD ["nginx", "-g", "daemon off;"]
