@@ -47,53 +47,58 @@ const getURLEndpoint = type => {
 export const DEFAULT_CONFIG = {
   panels: {
     sidebar: {
-      display: true,
-      collapsed: false,
+      display: false,
+      collapsed: true,
     },
     header: {
-      display: true,
+      display: false,
     },
     info: {
-      display: true,
+      display: false,
       collapsed: true,
     },
   },
   ros: {
     endpoint:
-      getURLEndpoint('bridge') || `wss://zethus-pub.wsrobots.com`,
+      `wss://zethus-pub.wsrobots.com`,
     pkgsEndpoint:
-      getURLEndpoint('pkgs') || `https://zethus-pub.wsrobots.com`,
+      `https://zethus-pkg.wsrobots.com/`,
   },
   infoTabs: [],
   visualizations: [
     {
-      vizType: 'Tf',
-      topicName: '/tf_old',
-      messageType: 'tf2_msgs/TFMessage',
-      name: 'Tf',
+      vizType: 'RobotModel',
+      topicName: 'robot_description',
+      messageType: '',
+      name: 'AMR Model',
       visible: true,
-      key: 'sHZDWudi7'
+      key: 'F77cjKwsE',
+      packages: {
+        fanuc_r2000ic_support: `https://zethus-pkg.wsrobots.com/fanuc_r2000ic_support`,
+        ws5000_workcell_support: `https://zethus-pkg.wsrobots.com/ws5000_workcell_support`
+      }
     },
     {
-      vizType: 'Odometry',
-      topicName: '/odom_rosbag',
-      messageType: 'nav_msgs/Odometry',
-      name: 'Odometry',
+      vizType: 'PointCloud',
+      topicName: '/scan_cloud_rviz',
+      messageType: 'sensor_msgs/PointCloud2nav_msgs/Odometry',
+      name: 'Part Scan',
       visible: true,
-      key: '6LgWYoPl_',
+      key: 'B5BATLMiG',
       keep: '20',
-      color: '#204a87'
+      color: '#204a87',
+      size: '0.003'
     }
   ],
   globalOptions: {
     display: true,
     backgroundColor: {
       display: true,
-      value: DEFAULT_OPTIONS_SCENE.backgroundColor,
+      value: '#555753',
     },
     fixedFrame: {
       display: true,
-      value: 'world',
+      value: 'base_link-tf-connector',
     },
     grid: {
       display: true,
