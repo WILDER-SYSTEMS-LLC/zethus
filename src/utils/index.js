@@ -47,22 +47,20 @@ const getURLEndpoint = type => {
 export const DEFAULT_CONFIG = {
   panels: {
     sidebar: {
-      display: false,
-      collapsed: true,
+      display: true,
+      collapsed: false,
     },
     header: {
       display: false,
     },
     info: {
-      display: false,
+      display: true,
       collapsed: true,
     },
   },
   ros: {
-    endpoint:
-      `wss://zethus-pub.wsrobots.com`,
-    pkgsEndpoint:
-      `https://zethus-pkg.wsrobots.com/`,
+    endpoint: `ws://localhost:9090`,
+    pkgsEndpoint: `http://localhost:9000/ros-pkgs`,
   },
   infoTabs: [],
   visualizations: [
@@ -74,9 +72,9 @@ export const DEFAULT_CONFIG = {
       visible: true,
       key: 'F77cjKwsE',
       packages: {
-        fanuc_r2000ic_support: `https://zethus-pkg.wsrobots.com/fanuc_r2000ic_support`,
-        ws5000_workcell_support: `https://zethus-pkg.wsrobots.com/ws5000_workcell_support`
-      }
+        fanuc_r2000ic_support: `http://localhost:9000/ros-pkgs/fanuc_r2000ic_support`,
+        ws5000_workcell_support: `http://localhost:9000/ros-pkgs/ws5000_workcell_support`,
+      },
     },
     {
       vizType: 'PointCloud',
@@ -87,8 +85,24 @@ export const DEFAULT_CONFIG = {
       key: 'B5BATLMiG',
       keep: '20',
       color: '#204a87',
-      size: '0.003'
-    }
+      size: '0.003',
+    },
+    {
+      vizType: 'InteractiveMarker',
+      topicName: '/feature_visualization/update_full',
+      messageType: 'visualization_msgs/InteractiveMarkerInit',
+      name: 'InteractiveMarker',
+      visible: true,
+      key: 'KfY31NSSc',
+      updateTopicName: {
+        name: '/feature_visualization/update',
+        messageType: 'visualization_msgs/InteractiveMarkerUpdate',
+      },
+      feedbackTopicName: {
+        name: '/feature_visualization/feedback',
+        messageType: 'visualization_msgs/InteractiveMarkerFeedback',
+      },
+    },
   ],
   globalOptions: {
     display: true,
